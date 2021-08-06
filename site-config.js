@@ -39,15 +39,15 @@ export const projectsList = [
     id: 1,
     title: "Portfolio",
     logo: portfolioLogo,
-    link: "/",
-    desc: `This site you are reading this on right now.`,
+    link: "https://github.com/ghaynes1292/portfolio/",
+    desc: `This site.`,
     technologies: ["react", "nextjs", "chakraui", "typescript"]
   },
   {
     id: 2,
     title: "F1Stats",
     logo: f1statsLogo,
-    link: "https://google.com",
+    link: "https://eternal-entity-311516.wm.r.appspot.com/",
     desc: `An application to track the stats and value of drivers during a formula 1 season. Integration with the fantasy formula 1 application for monetary values.`,
     technologies: ["react", "material-ui", "express", "postgresql"]
   },
