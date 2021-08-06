@@ -51,7 +51,6 @@ import {
                 isExternal
                 href={sc.url}
                 aria-label={sc.label}
-                size="lg"
                 colorScheme={sc.type}
                 icon={sc.icon}
                 {...iconProps}

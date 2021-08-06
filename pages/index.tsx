@@ -1,17 +1,10 @@
 import {
   Flex,
   Box,
-  Text,
-  Stack,
-  Link,
-  UnorderedList,
-  ListItem,
-  useColorModeValue,
   VStack,
   SimpleGrid
 } from "@chakra-ui/react";
 import { AnimateSharedLayout } from "framer-motion";
-import NextLink from 'next/link'
 import Header from "components/header";
 import Card from "components/card";
 import { MotionBox, MotionFlex } from "components/motion";

@@ -1,7 +1,14 @@
 import Head from 'next/head'
 import siteConfig from '../site-config'
 
-const Meta = ({ title, keywords, description }) => {
+interface MetaProps {
+    title: string,
+    keywords: string,
+    description: string,
+}
+
+const Meta = (props: MetaProps) => {
+    const { title, keywords, description } = props
     return (
         <Head>
             <meta name='viewport' content='width=device-width, initial-scale=1' />

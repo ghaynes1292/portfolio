@@ -1,32 +1,31 @@
 import {
-    Box,
-    Flex,
-    HStack,
-    Link,
-    IconButton,
-    useDisclosure,
-    useColorModeValue,
-    Stack,
-  } from "@chakra-ui/react";
-  import { GiHamburgerMenu } from "react-icons/gi";
-  import { AiOutlineClose } from "react-icons/ai";
-  import { ColorModeSwitcher } from "./color-mode-switcher";
-  // import UserIcon from "assets/images/user_icon.png";
-  import NextLink from "next/link";
-  
-  const webLinks = [
-    { name: "/", path: '/' },
-    { name: "About", path: "/about" },
-    // { name: "Tech Stack", path: "/tech-stack" },
-    // { name: "Achievements", path: "/achievements" }
-  ];
-  
-  interface NavLinkProps {
-    index?: number;
-    name: string;
-    path: string;
-    onClose: () => void;
-  }
+  Box,
+  Flex,
+  HStack,
+  Link,
+  IconButton,
+  useDisclosure,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
+import { ColorModeSwitcher } from "./color-mode-switcher";
+// import UserIcon from "assets/images/user_icon.png";
+import NextLink from "next/link";
+
+const webLinks = [
+  { name: "/", path: '/' },
+  { name: "About", path: "/about" },
+  // { name: "Tech Stack", path: "/tech-stack" },
+  // { name: "Achievements", path: "/achievements" }
+];
+
+interface NavLinkProps {
+  index?: number;
+  name: string;
+  path: string;
+  onClose: () => void;
+}
   
   const NavLink = (props: NavLinkProps) => {
     const link = {
