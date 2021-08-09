@@ -92,13 +92,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               >
                 {title}
               </Text>
-              <HStack spacing="1">
-                {technologies.map((tech, index) => (
-                  <Tag key={index} size="sm" colorScheme={getTagColor(tech)}>
-                    {tech}
-                  </Tag>
-                ))}
-              </HStack>
+            </HStack>
+            <HStack spacing="1">
+              {technologies.map((tech, index) => (
+                <Tag key={index} size="sm" colorScheme={getTagColor(tech)}>
+                  {tech}
+                </Tag>
+              ))}
             </HStack>
             <Text fontSize="sm" color={textColor} noOfLines={{ base: 2 }}>
               {description}

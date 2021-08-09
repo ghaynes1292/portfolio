@@ -1,19 +1,21 @@
 import { useState } from "react";
 import {
   Icon,
-  VStack,
-  HStack,
   Text,
   Button,
-  ButtonGroup,
   useColorModeValue,
+  useBreakpointValue,
   SimpleGrid,
-  Center,
   Box,
   Link,
+  Wrap,
+  WrapItem,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import NextLink from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion'
 import { AiTwotoneThunderbolt, AiOutlineCloudServer } from "react-icons/ai";
 import { BiDesktop } from "react-icons/bi";
 import { GiSpiderWeb } from "react-icons/gi";
@@ -23,60 +25,52 @@ import { PageSlideFade } from "components/transitions";
 import PageLayout from "components/page-layout";
 import { skills } from "site-config";
 
-import { motion } from 'framer-motion'
-
 function SkillCard({ name, image, link, description }) {
+  const descriptionLength = useBreakpointValue({ base: 5, sm: 5, md: 4, lg: 4 })
+  
   return (
     <motion.div {...cardMotion}>
       <NextLink href={link} passHref>
         <Link isExternal>
-          <HStack
-            p={4}
+          <Box
             bg={useColorModeValue("white", "gray.800")}
             rounded="xl"
             borderWidth="1px"
             borderColor={useColorModeValue("gray.100", "gray.700")}
-            w="100%"
-            textAlign="left"
-            align="start"
-            spacing={4}
+            p={4}
+            position="relative"
+            overflow="hidden"
+            boxShadow="inset 0 0 1px 1px rgba(0, 0, 0, 0.015)"
             _hover={{ shadow: "md" }}
           >
-            <Box
-              rounded="lg"
-              p={2}
-              position="relative"
-              overflow="hidden"
-              lineHeight={0}
-              boxShadow="inset 0 0 1px 1px rgba(0, 0, 0, 0.015)"
+            <Grid
+              templateRows="repeat(2, 1fr)"
+              templateColumns="repeat(5, 1fr)"
+              gap={1}
             >
-              <Image
-                src={image}
-                height={26}
-                width={26}
-                layout="fixed"
-              />
-            </Box>
-            <VStack
-              align="start"
-              justify="flex-start"
-              spacing={1}
-              maxW="lg"
-              h="100%"
-            >
-              <VStack spacing={0} align="start" flexGrow={1}>
-                <Text fontWeight="bold" fontSize="md" noOfLines={2}>
+              <GridItem rowSpan={1} colSpan={1}>
+                <Image
+                  src={image}
+                  height={26}
+                  width={26}
+                  layout="fixed"
+                />
+              </GridItem>
+              <GridItem colSpan={4}>
+                <Text fontWeight="bold" fontSize="md">
                   {name}
                 </Text>
+              </GridItem>
+              <GridItem colSpan={descriptionLength} colStart={6 - descriptionLength}>
                 <Text
                   fontSize="sm"
                   color={useColorModeValue("gray.500", "gray.200")}
                 >
                   {description}
                 </Text>
-              </VStack>
-            </VStack>
-          </HStack>
+              </GridItem>
+            </Grid>
+          </Box>
         </Link>
       </NextLink>
     </motion.div>
@@ -104,66 +98,74 @@ const TechStack = ({ skills }) => {
       keywords="javascript, react, node, typescript, ruby"
     >
       <PageSlideFade>
-        <VStack spacing={8}>
-          <Center as="section" w="80%">
-            <VStack>
-              <Header mt={0} mb={1}>
-                Tech Stack
-              </Header>
-              <Text
-                fontSize={"xl"}
-                color={useColorModeValue("gray.500", "gray.200")}
-                maxW="lg"
-                textAlign="center"
+        <Box>
+          <Header mt={0} mb={2}>
+            Tech Stack
+          </Header>
+          <Text
+            fontSize={"xl"}
+            color={useColorModeValue("gray.500", "gray.200")}
+            maxW="lg"
+            textAlign="left"
+          >
+            These are the tools I use
+          </Text>
+          <Wrap mt={4}>
+            <WrapItem>
+              <Button
+                colorScheme={filter === 'all' ? "teal" : undefined}
+                onClick={() => handleFilterSelect('all')}
+                leftIcon={<Icon as={AiTwotoneThunderbolt} />}
+                size="sm"
               >
-                These are the tools I use
-              </Text>
-              <ButtonGroup colorScheme="gray" variant="solid" spacing="6">
-                <Button
-                  colorScheme={filter === 'all' ? "teal" : undefined}
-                  onClick={() => handleFilterSelect('all')}
-                  leftIcon={<Icon as={AiTwotoneThunderbolt} />}
-                >
-                  All
-                </Button>
-                <Button
-                  colorScheme={filter === 'development' ? "red" : undefined}
-                  onClick={() => handleFilterSelect('development')}
-                  leftIcon={<Icon as={BiDesktop} />}
-                >
-                  Web Development
-                </Button>
-                <Button
-                  colorScheme={filter === 'design' ? "green" : undefined}
-                  onClick={() => handleFilterSelect('design')}
-                  leftIcon={<Icon as={GiSpiderWeb} />}
-                >
-                  Web Design
-                </Button>
-                <Button
-                  colorScheme={filter === 'devops' ? "blue" : undefined}
-                  onClick={() => handleFilterSelect('devops')}
-                  leftIcon={<Icon as={AiOutlineCloudServer} />}
-                >
-                  Devops
-                </Button>
-              </ButtonGroup>
-              <motion.div {...cardContainerMotion}>
-                <SimpleGrid columns={2} spacing={4} mt={8}>
-                  {skillsList.map((tool, index) => (
-                    <SkillCard
-                      key={index}
-                      name={tool.name}
-                      description={tool.description}
-                      image={tool.image}
-                      link={tool.link}
-                    /> 
-                  ))}
-                </SimpleGrid>
-              </motion.div>
-            </VStack>
-          </Center>
-        </VStack>
+                All
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                colorScheme={filter === 'development' ? "red" : undefined}
+                onClick={() => handleFilterSelect('development')}
+                leftIcon={<Icon as={BiDesktop} />}
+                size="sm"
+              >
+                Web Development
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                colorScheme={filter === 'design' ? "green" : undefined}
+                onClick={() => handleFilterSelect('design')}
+                leftIcon={<Icon as={GiSpiderWeb} />}
+                size="sm"
+              >
+                Web Design
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                colorScheme={filter === 'devops' ? "blue" : undefined}
+                onClick={() => handleFilterSelect('devops')}
+                leftIcon={<Icon as={AiOutlineCloudServer} />}
+                size="sm"
+              >
+                Devops
+              </Button>
+            </WrapItem>
+          </Wrap>
+          <motion.div {...cardContainerMotion}>
+            <SimpleGrid columns={2} spacing={4} mt={4}>
+              {skillsList.map((tool, index) => (
+                <SkillCard
+                  key={index}
+                  name={tool.name}
+                  description={tool.description}
+                  image={tool.image}
+                  link={tool.link}
+                /> 
+              ))}
+            </SimpleGrid>
+          </motion.div>
+        </Box>
       </PageSlideFade>
     </PageLayout>
   );

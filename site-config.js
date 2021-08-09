@@ -23,6 +23,7 @@ import reactLogo from "images/skills/react.png"
 import redisLogo from "images/skills/redis.png"
 import rubyLogo from "images/skills/ruby.png"
 import typescriptLogo from "images/skills/typescript.png"
+import dockerLogo from "images/skills/docker.png"
 import vscodeLogo from "images/skills/vscode.png"
 
 
@@ -186,6 +187,13 @@ export const skills = [
     link: "https://rubyonrails.org/",
     type: "development",
     image: railsLogo
+  },
+  {
+    name: "Docker",
+    description: "Application containers",
+    link: "https://www.docker.com//",
+    type: "devops",
+    image: dockerLogo
   },
   {
     name: "Heroku",

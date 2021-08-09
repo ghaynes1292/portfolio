@@ -3,14 +3,10 @@ import {
   Flex,
   HStack,
   Link,
-  IconButton,
   useDisclosure,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineClose } from "react-icons/ai";
 import { ColorModeSwitcher } from "./color-mode-switcher";
-// import UserIcon from "assets/images/user_icon.png";
 import NextLink from "next/link";
 
 const webLinks = [
@@ -74,28 +70,10 @@ interface NavLinkProps {
             maxW={800}
             mx="auto"
           >
-            <IconButton
-              size={"md"}
-              icon={isOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
-              aria-label={"Open Menu"}
-              display={["inherit", "inherit", "none"]}
-              onClick={isOpen ? onClose : onOpen}
-            />
             <HStack spacing={8} alignItems={"center"}>
-              {/* <Box>
-                <NextLink href={"/"} passHref>
-                  <Avatar
-                    as={Link}
-                    size={"sm"}
-                    // src={UserIcon}
-                    src={""}
-                  />
-                </NextLink>
-              </Box> */}
               <HStack
                 as={"nav"}
                 spacing={4}
-                display={{ base: "none", md: "flex" }}
               >
                 {webLinks.map((link, index) => (
                   <NavLink
