@@ -1,25 +1,43 @@
-import {
-  Box,
-  Flex,
-  Image,
-  forwardRef,
-} from "@chakra-ui/react";
-import { motion, isValidMotionProp } from "framer-motion";
+export const staggerVariantsMotion = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
 
-export const MotionBox = motion(
-  forwardRef((props, ref) => {
-    const chakraProps = Object.fromEntries(
-      Object.entries(props).filter(([key]) => !isValidMotionProp(key))
-    );
-    return <Box ref={ref} {...chakraProps} />;
-  })
-);
+export const staggerChildrenMotion = {
+  animate: {
+    opacity: 1,
+    translateY: 0
+  },
+  variants: staggerVariantsMotion
+}
 
-export const MotionFlex = motion(
-  forwardRef((props, ref) => {
-    const chakraProps = Object.fromEntries(
-      Object.entries(props).filter(([key]) => !isValidMotionProp(key))
-    );
-    return <Flex ref={ref} {...chakraProps} />;
-  })
-);
+export const cardContainerMotion = {
+  initial: "hidden",
+  animate: "visible",
+  variants: {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+};
+
+export const cardMotion = {
+  whileHover: { scale: 1.1 },
+  whileTap: { scale: 0.95 },
+  variants: { 
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  }
+};

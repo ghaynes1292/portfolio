@@ -1,7 +1,6 @@
-import React, { Fragment, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
 import Meta from "./meta";
-import { Box } from "@chakra-ui/react";
 
 type Props = {
   children: ReactNode;
@@ -17,7 +16,7 @@ const variants = {
 };
 
 const PageLayout = ({ children, title, description, keywords }: Props): JSX.Element => (
-  <Fragment>
+  <>
     <Meta title={title} description={description} keywords={keywords} />
     <motion.main
       initial="hidden"
@@ -28,7 +27,7 @@ const PageLayout = ({ children, title, description, keywords }: Props): JSX.Elem
     >
       {children}
     </motion.main>
-  </Fragment>
+  </>
 );
 
 export default PageLayout;

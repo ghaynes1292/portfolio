@@ -21,6 +21,7 @@
       "site-config": ["site-config"],
       "styles/*": ["styles/*"],
       "public/*": ["public/*"],
+      "images/*": ["public/images/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

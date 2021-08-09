@@ -170,9 +170,11 @@ export const getTagColor = (type: String) => {
     return "teal";
   } else if (type === "mysql" || type === "postgresql") {
     return "purple";
-  } else if (type === "express") {
+  } else if (type === "node") {
     return "pink";
   } else if (type === "typescript") {
     return "green";
+  } else if (type === "html") {
+    return "orange";
   }
 };

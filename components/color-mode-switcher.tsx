@@ -1,32 +1,34 @@
 import {
-    useColorMode,
-    useColorModeValue,
-    IconButtonProps
-  } from "@chakra-ui/react";
-  import { FaMoon, FaSun } from "react-icons/fa";
-  import { AnimatePresence } from "framer-motion";
-  import { MotionBox } from "./motion";
+  useColorMode,
+  useColorModeValue,
+  IconButtonProps,
+  Box,
+} from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
   
   type ColorModeSwitcherProps = Omit<IconButtonProps, "aria-label">;
   
-  export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = props => {
+  export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = () => {
     const { toggleColorMode } = useColorMode();
     const mode = useColorModeValue("dark", "light");
   
     return (
       <AnimatePresence exitBeforeEnter initial={false}>
-        <MotionBox
-          onClick={toggleColorMode}
-          key={mode === "dark" ? "dark-icon" : "light-icon"}
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 20, opacity: 0 }}
-          transition={{ duration: 0.2 }}
+        <Box
           cursor="pointer"
           fontSize={["2xl", "3xl", "3xl"]}
+          onClick={toggleColorMode}
+          key={mode === "dark" ? "dark-icon" : "light-icon"}
         >
-          {mode === "dark" ? "🌤" : "🌙"}
-        </MotionBox>
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 20, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {mode === "dark" ? "🌤" : "🌙"}
+          </motion.div> 
+        </Box>
       </AnimatePresence>
     );
   };

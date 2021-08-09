@@ -16,7 +16,7 @@ import NextLink from "next/link";
 const webLinks = [
   { name: "/", path: '/' },
   { name: "About", path: "/about" },
-  // { name: "Tech Stack", path: "/tech-stack" },
+  { name: "Tech", path: "/tech" },
   // { name: "Achievements", path: "/achievements" }
 ];
 
@@ -88,7 +88,7 @@ interface NavLinkProps {
                     as={Link}
                     size={"sm"}
                     // src={UserIcon}
-                    src={"https://avatars2.githubusercontent.com/u/37842853?v=4"}
+                    src={""}
                   />
                 </NextLink>
               </Box> */}
